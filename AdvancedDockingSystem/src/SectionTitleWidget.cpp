@@ -57,7 +57,7 @@ void SectionTitleWidget::setActiveTab(bool active)
 		style()->polish(this);
 		update();
 
-		emit activeTabChanged();
+      Q_EMIT activeTabChanged();
 	}
 }
 
@@ -165,7 +165,7 @@ void SectionTitleWidget::mouseReleaseEvent(QMouseEvent* ev)
 	}
 
 	if (!_dragStartPos.isNull())
-		emit clicked();
+      Q_EMIT clicked();
 
 	// Reset
 	_dragStartPos = QPoint();

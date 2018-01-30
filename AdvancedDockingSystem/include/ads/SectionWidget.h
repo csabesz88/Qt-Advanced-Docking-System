@@ -53,10 +53,10 @@ public:
 protected:
 	virtual void showEvent(QShowEvent*);
 
-public slots:
+public Q_SLOTS:
 	void setCurrentIndex(int index);
 
-private slots:
+private Q_SLOTS:
 	void onSectionTitleClicked();
 	void onCloseButtonClicked();
 	void onTabsMenuActionTriggered(bool);

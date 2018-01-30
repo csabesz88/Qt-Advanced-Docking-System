@@ -22,7 +22,7 @@ public:
 	SectionContentListWidget(QWidget* parent);
 	void setValues(const Values& v);
 
-private slots:
+private Q_SLOTS:
 	void onDeleteButtonClicked();
 
 private:

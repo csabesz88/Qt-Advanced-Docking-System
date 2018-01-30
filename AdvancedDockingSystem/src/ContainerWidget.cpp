@@ -145,7 +145,7 @@ bool ContainerWidget::showSectionContent(const SectionContent::RefPtr& sc)
 		fw->setVisible(true);
 		fw->_titleWidget->setVisible(true);
 		fw->_contentWidget->setVisible(true);
-		emit sectionContentVisibilityChanged(sc, true);
+		Q_EMIT sectionContentVisibilityChanged(sc, true);
 		return true;
 	}
 
@@ -161,13 +161,13 @@ bool ContainerWidget::showSectionContent(const SectionContent::RefPtr& sc)
 		if (hsi.preferredSectionId > 0 && (sw = SWLookupMapById(this).value(hsi.preferredSectionId)) != NULL)
 		{
 			sw->addContent(hsi.data, true);
-			emit sectionContentVisibilityChanged(sc, true);
+			Q_EMIT sectionContentVisibilityChanged(sc, true);
 			return true;
 		}
 		else if (_sections.size() > 0 && (sw = _sections.first()) != NULL)
 		{
 			sw->addContent(hsi.data, true);
-			emit sectionContentVisibilityChanged(sc, true);
+			Q_EMIT sectionContentVisibilityChanged(sc, true);
 			return true;
 		}
 		else
@@ -175,7 +175,7 @@ bool ContainerWidget::showSectionContent(const SectionContent::RefPtr& sc)
 			sw = newSectionWidget();
 			addSection(sw);
 			sw->addContent(hsi.data, true);
-			emit sectionContentVisibilityChanged(sc, true);
+			Q_EMIT sectionContentVisibilityChanged(sc, true);
 			return true;
 		}
 	}
@@ -198,7 +198,7 @@ bool ContainerWidget::hideSectionContent(const SectionContent::RefPtr& sc)
 		if (!found)
 			continue;
 		_floatings.at(i)->setVisible(false);
-		emit sectionContentVisibilityChanged(sc, false);
+		Q_EMIT sectionContentVisibilityChanged(sc, false);
 		return true;
 	}
 
@@ -229,7 +229,7 @@ bool ContainerWidget::hideSectionContent(const SectionContent::RefPtr& sc)
 			sw = NULL;
 			deleteEmptySplitter(this);
 		}
-		emit sectionContentVisibilityChanged(sc, false);
+		Q_EMIT sectionContentVisibilityChanged(sc, false);
 		return true;
 	}
 
@@ -317,7 +317,7 @@ QMenu* ContainerWidget::createContextMenu() const
 	{
 		const SectionWidget* sw = _sections.at(i);
 		const QList<SectionContent::RefPtr>& contents = sw->contents();
-		foreach (const SectionContent::RefPtr& sc, contents)
+      for (const SectionContent::RefPtr& sc : qAsConst(contents))
 		{
 			QAction* a = new QAction(QIcon(), sc->visibleTitle(), NULL);
 			a->setObjectName(QString("ads-action-sc-%1").arg(QString::number(sc->uid())));
@@ -892,7 +892,7 @@ bool ContainerWidget::saveSectionIndex(ADS_NS_SER::SectionIndexData& sid) const
 		se.height = _sections[i]->geometry().height();
 		se.currentIndex = _sections[i]->currentIndex();
 		se.sectionContentsCount = _sections[i]->contents().count();
-		foreach (const SectionContent::RefPtr& sc, _sections[i]->contents())
+      for (const SectionContent::RefPtr& sc : qAsConst(_sections[i]->contents()))
 		{
 			ADS_NS_SER::SectionContentEntity sce;
 			sce.uniqueName = sc->uniqueName();
@@ -1249,7 +1249,7 @@ void ContainerWidget::onActiveTabChanged()
 	SectionTitleWidget* stw = qobject_cast<SectionTitleWidget*>(sender());
 	if (stw)
 	{
-		emit activeTabChanged(stw->_content, stw->isActiveTab());
+		Q_EMIT activeTabChanged(stw->_content, stw->isActiveTab());
 	}
 }
 

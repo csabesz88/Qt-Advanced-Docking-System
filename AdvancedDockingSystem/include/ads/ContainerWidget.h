@@ -143,11 +143,11 @@ private:
 
 	bool takeContent(const SectionContent::RefPtr& sc, InternalContentData& data);
 
-private slots:
+private Q_SLOTS:
 	void onActiveTabChanged();
 	void onActionToggleSectionContentVisibility(bool visible);
 
-signals:
+Q_SIGNALS:
 	void orientationChanged();
 
 	/*!

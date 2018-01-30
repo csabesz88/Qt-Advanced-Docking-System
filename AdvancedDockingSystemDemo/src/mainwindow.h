@@ -18,10 +18,10 @@ public:
 	explicit MainWindow(QWidget *parent = 0);
 	virtual ~MainWindow();
 
-public slots:
+public Q_SLOTS:
 	void showSectionContentListDialog();
 
-private slots:
+private Q_SLOTS:
 #if QT_VERSION >= 0x050000
 	void onActiveTabChanged(const ADS_NS::SectionContent::RefPtr& sc, bool active);
 	void onSectionContentVisibilityChanged(const ADS_NS::SectionContent::RefPtr& sc, bool visible);

@@ -30,7 +30,7 @@ public:
 public://private:
 	bool takeContent(InternalContentData& data);
 
-private slots:
+private Q_SLOTS:
 	void onCloseButtonClicked();
 
 private:

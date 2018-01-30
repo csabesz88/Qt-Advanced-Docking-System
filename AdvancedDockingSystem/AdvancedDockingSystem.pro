@@ -2,7 +2,9 @@ TARGET = AdvancedDockingSystem
 TEMPLATE = lib
 VERSION = 1.0.0
 
-CONFIG += adsBuildShared
+CONFIG += \
+   adsBuildShared \
+   no_keywords
 
 QT += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

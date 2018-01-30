@@ -13,7 +13,7 @@ class IconTitleWidget : public QFrame
 public:
 	explicit IconTitleWidget(const QIcon& icon, const QString& title, QWidget *parent = 0);
 
-public slots:
+public Q_SLOTS:
 	void setIcon(const QIcon& icon);
 	void setTitle(const QString& title);
 	void polishUpdate();

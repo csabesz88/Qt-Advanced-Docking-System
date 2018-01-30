@@ -45,7 +45,7 @@ protected:
 	virtual void mouseReleaseEvent(QMouseEvent* ev);
 	virtual void mouseMoveEvent(QMouseEvent* ev);
 
-signals:
+Q_SIGNALS:
 	void activeTabChanged();
 	void clicked();
 };
