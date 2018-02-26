@@ -64,6 +64,7 @@ SectionWidget::SectionWidget(ContainerWidget* parent) :
 
 	_tabsMenuButton = new QPushButton();
 	_tabsMenuButton->setObjectName("tabsMenuButton");
+   _tabsMenuButton->setProperty("minSize", true);
 	_tabsMenuButton->setFlat(true);
 	_tabsMenuButton->setIcon(style()->standardIcon(QStyle::SP_TitleBarUnshadeButton));
 	_tabsMenuButton->setMaximumWidth(_tabsMenuButton->iconSize().width());
@@ -76,6 +77,7 @@ SectionWidget::SectionWidget(ContainerWidget* parent) :
 
 	_closeButton = new QPushButton();
 	_closeButton->setObjectName("closeButton");
+   _closeButton->setProperty("minSize", true);
 	_closeButton->setFlat(true);
 	_closeButton->setIcon(style()->standardIcon(QStyle::SP_TitleBarCloseButton));
 	_closeButton->setToolTip(tr("Close"));
@@ -350,9 +352,15 @@ void SectionWidget::setCurrentIndex(int index)
 					stw->setActiveTab(true);
 					_tabsScrollArea->ensureWidgetVisible(stw);
 					if (stw->_content->flags().testFlag(SectionContent::Closeable))
+               {
+                  _closeButton->show();
 						_closeButton->setEnabled(true);
+               }
 					else
+               {
+                  _closeButton->hide();
 						_closeButton->setEnabled(false);
+               }
 				}
 				else
 					stw->setActiveTab(false);
