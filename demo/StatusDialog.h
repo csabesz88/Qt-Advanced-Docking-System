@@ -25,7 +25,7 @@ private:
 	StatusDialogPrivate* d; ///< private data (pimpl)
     friend struct StatusDialogPrivate;
 
-private slots:
+private Q_SLOTS:
 	void on_dockWidgetsComboBox_currentIndexChanged(int index);
 
 protected:

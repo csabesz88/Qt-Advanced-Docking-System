@@ -229,7 +229,7 @@ void CFloatingWidgetTitleBar::mouseDoubleClickEvent(QMouseEvent *event)
 {
     if (event->buttons() & Qt::LeftButton)
     {
-        emit maximizeRequested();
+        Q_EMIT maximizeRequested();
         event->accept();
     }
     else

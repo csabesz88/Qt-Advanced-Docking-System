@@ -58,7 +58,7 @@ private:
     DockWidgetPrivate* d; ///< private data (pimpl)
     friend struct DockWidgetPrivate;
 
-private slots:
+private Q_SLOTS:
     /**
      * Adjusts the toolbar icon sizes according to the floating state
      */
@@ -112,14 +112,14 @@ protected:
     void flagAsUnassigned();
 
     /**
-     * Call this function to emit a topLevelChanged() signal and to update
+     * Call this function to Q_EMIT a topLevelChanged() signal and to update
      * the dock area tool bar visibility
      */
     static void emitTopLevelEventForWidget(CDockWidget* TopLevelDockWidget, bool Floating);
 
     /**
-     * Use this function to emit a top level changed event.
-     * Do never use emit topLevelChanged(). Always use this function because
+     * Use this function to Q_EMIT a top level changed event.
+     * Do never use Q_EMIT topLevelChanged(). Always use this function because
      * it only emits a signal if the floating state has really changed
      */
     void emitTopLevelChanged(bool Floating);
@@ -483,7 +483,7 @@ public: // reimplements QFrame -----------------------------------------------
      */
     virtual bool event(QEvent *e) override;
 
-public slots:
+public Q_SLOTS:
     /**
      * This property controls whether the dock widget is open or closed.
      * The toogleViewAction triggers this slot
@@ -544,7 +544,7 @@ public slots:
     void showNormal();
 
 
-signals:
+Q_SIGNALS:
     /**
      * This signal is emitted if the dock widget is opened or closed
      */

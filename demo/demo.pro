@@ -8,8 +8,9 @@ win32 {
 QT += axcontainer
 }
 
-CONFIG += c++14
+CONFIG += c++17
 CONFIG += debug_and_release
+CONFIG += no_keywords
 DEFINES += QT_DEPRECATED_WARNINGS
 
 adsBuildStatic {

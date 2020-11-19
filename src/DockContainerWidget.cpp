@@ -201,8 +201,8 @@ public:
 	void addDockAreasToList(const QList<CDockAreaWidget*> NewDockAreas);
 
 	/**
-	 * Wrapper function for DockAreas append, that ensures that dock area signals
-	 * are properly connected to dock container slots
+	 * Wrapper function for DockAreas append, that ensures that dock area Q_SIGNALS
+	 * are properly connected to dock container Q_SLOTS
 	 */
 	void appendDockAreas(const QList<CDockAreaWidget*> NewDockAreas);
 
@@ -284,13 +284,13 @@ public:
 	void emitDockAreasRemoved()
 	{
 		onVisibleDockAreaCountChanged();
-		emit _this->dockAreasRemoved();
+		Q_EMIT _this->dockAreasRemoved();
 	}
 
 	void emitDockAreasAdded()
 	{
 		onVisibleDockAreaCountChanged();
-		emit _this->dockAreasAdded();
+		Q_EMIT _this->dockAreasAdded();
 	}
 
 	/**
@@ -335,13 +335,13 @@ public:
      */
     bool widgetResizesWithContainer(QWidget* widget);
 
-// private slots: ------------------------------------------------------------
+// private Q_SLOTS: ------------------------------------------------------------
 	void onDockAreaViewToggled(bool Visible)
 	{
 		CDockAreaWidget* DockArea = qobject_cast<CDockAreaWidget*>(_this->sender());
 		VisibleDockAreaCount += Visible ? 1 : -1;
 		onVisibleDockAreaCountChanged();
-		emit _this->dockAreaViewToggled(DockArea, Visible);
+		Q_EMIT _this->dockAreaViewToggled(DockArea, Visible);
 	}
 }; // struct DockContainerWidgetPrivate
 

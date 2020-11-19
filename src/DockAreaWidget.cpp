@@ -379,7 +379,7 @@ CDockAreaWidget::CDockAreaWidget(CDockManager* DockManager, CDockContainerWidget
 	d->ContentsLayout = new DockAreaLayout(d->Layout);
 	if (d->DockManager)
 	{
-		emit d->DockManager->dockAreaCreated(this);
+		Q_EMIT d->DockManager->dockAreaCreated(this);
 	}
 }
 
@@ -605,11 +605,11 @@ void CDockAreaWidget::setCurrentIndex(int index)
 		return;
 	}
 
-    emit currentChanging(index);
+    Q_EMIT currentChanging(index);
     TabBar->setCurrentIndex(index);
 	d->ContentsLayout->setCurrentIndex(index);
 	d->ContentsLayout->currentWidget()->show();
-	emit currentChanged(index);
+	Q_EMIT currentChanged(index);
 }
 
 
@@ -858,7 +858,7 @@ void CDockAreaWidget::toggleView(bool Open)
 {
 	setVisible(Open);
 
-	emit viewToggled(Open);
+	Q_EMIT viewToggled(Open);
 }
 
 

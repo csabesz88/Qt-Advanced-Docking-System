@@ -353,7 +353,7 @@ void CDockWidgetTab::mousePressEvent(QMouseEvent* ev)
 		ev->accept();
         d->saveDragStartMousePosition(ev->globalPos());
         d->DragState = DraggingMousePressed;
-        emit clicked();
+        Q_EMIT clicked();
 		return;
 	}
 	Super::mousePressEvent(ev);
@@ -374,10 +374,10 @@ void CDockWidgetTab::mouseReleaseEvent(QMouseEvent* ev)
 		switch (CurrentDragState)
 		{
 		case DraggingTab:
-			// End of tab moving, emit signal
+			// End of tab moving, Q_EMIT signal
 			if (d->DockArea)
 			{
-				emit moved(ev->globalPos());
+				Q_EMIT moved(ev->globalPos());
 			}
 			break;
 
@@ -538,7 +538,7 @@ void CDockWidgetTab::setActiveTab(bool active)
 	update();
 	updateGeometry();
 
-	emit activeTabChanged();
+	Q_EMIT activeTabChanged();
 }
 
 

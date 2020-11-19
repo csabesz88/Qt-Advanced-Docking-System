@@ -34,7 +34,7 @@ private:
 
     void createPerspectiveUi();
 
-private slots:
+private Q_SLOTS:
 	void savePerspective();
 };
 #endif // MAINWINDOW_H

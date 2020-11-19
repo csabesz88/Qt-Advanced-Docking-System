@@ -55,12 +55,12 @@ struct FloatingDragPreviewPrivate
 	}
 
 	/**
-	 * Cancel dragging and emit the draggingCanceled event
+	 * Cancel dragging and Q_EMIT the draggingCanceled event
 	 */
 	void cancelDragging()
 	{
 		Canceled = true;
-		emit _this->draggingCanceled();
+		Q_EMIT _this->draggingCanceled();
 		DockManager->containerOverlay()->hideOverlay();
 		DockManager->dockAreaOverlay()->hideOverlay();
 		_this->close();

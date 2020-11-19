@@ -54,7 +54,7 @@ public:
 	explicit CMainWindow(QWidget *parent = 0);
 	virtual ~CMainWindow();
 
-private slots:
+private Q_SLOTS:
 	void on_actionSaveState_triggered(bool);
 	void on_actionRestoreState_triggered(bool);
 	void savePerspective();
